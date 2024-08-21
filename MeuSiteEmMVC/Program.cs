@@ -7,9 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var provider = builder.Services.BuildServiceProvider();
-var configuration = provider.GetRequiredService<IConfiguration>();
-builder.Services.AddDbContext<BancoContext>(item => item.UseSqlServer(configuration.GetConnectionString("myconn")));
+// Acesse a configuração diretamente do builder
+var configuration = builder.Configuration;
+
+// Configure o DbContext com a string de conexão
+builder.Services.AddDbContext<BancoContext>(options =>
+    options.UseSqlServer(configuration.GetConnectionString("myconn")));
+
+// Registre o repositório com escopo
 builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
 
 var app = builder.Build();
