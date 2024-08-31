@@ -14,12 +14,13 @@ var configuration = builder.Configuration;
 builder.Services.AddDbContext<BancoContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("myconn")));
 
-// Registre o repositório com escopo
+// Injeção de dependência
 builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline. 
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

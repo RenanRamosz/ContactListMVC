@@ -37,7 +37,20 @@ function CriarTabelas(a) {
         });
     });
 }
-
 $('.btn-close').on("click", function(){
     $('.alert').hide();
 });
+
+// Script exibir/esconder senha do usuario
+const alternarSenha = document.querySelector('#togglePassword');
+const senha = document.querySelector('#inputPassword5');
+
+alternarSenha.addEventListener('click', function (e) {
+    // Alterna o tipo do campo entre 'password' e 'text'
+    const type = senha.getAttribute('type') === 'password' ? 'text' : 'password';
+    senha.setAttribute('type', type);
+
+    // Alterna o texto do botão entre 'Mostrar' e 'Esconder'
+    this.textContent = type === 'password' ? 'Mostrar' : 'Esconder';
+});
+

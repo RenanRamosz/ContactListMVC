@@ -56,7 +56,7 @@ namespace MeuSiteEmMVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _contatoRepository.Atualizar(contato);
+                    contato = _contatoRepository.Atualizar(contato);
                     TempData["MensagemSucesso"] = "Contato alterado com sucesso!";
                     return RedirectToAction("Index");
                 }
