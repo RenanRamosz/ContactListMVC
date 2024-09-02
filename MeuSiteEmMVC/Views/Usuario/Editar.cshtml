@@ -27,11 +27,13 @@
     </div>
     <div class="mb-2">
         <select asp-for="Perfil" class="form-select form-select-sm" aria-label="Small select example">
-            <option selected>Selecione o Perfil</option>
+            <option value="" selected>Selecione o Perfil</option>
             <option value="@MeuSiteEmMVC.Enums.PerfilEnum.Admin">Administrador</option>
             <option value="@MeuSiteEmMVC.Enums.PerfilEnum.Padrao">Padrão</option>
         </select>
+        @Html.ValidationMessageFor(x => x.Perfil)
     </div>
+
     <button type="submit" class="btn btn-primary w-100 mb-1">Alterar</button>
     <a class="btn btn-secondary w-100" asp-controller="Usuario" asp-action="Index" role="button">Voltar</a>
 </form>

@@ -29,6 +29,7 @@
             <option value="@MeuSiteEmMVC.Enums.PerfilEnum.Admin">Administrador</option>
             <option value="@MeuSiteEmMVC.Enums.PerfilEnum.Padrao">Padrão</option>
         </select>
+        @Html.ValidationMessageFor(x => x.Perfil)
     </div>
     <label for="inputPassword5" class="form-label">Senha</label>
     <div class="input-group mb-3">

@@ -16,7 +16,7 @@ namespace MeuSiteEmMVC.Models
         [EmailAddress(ErrorMessage = "O e-mail informado não é válido!")]
         public string Email { get; set; } = string.Empty;
         [Required(ErrorMessage = "Informe o perfil do usuario")]
-        public PerfilEnum Perfil { get; set; }
+        public PerfilEnum? Perfil { get; set; }
         public DateTime DataCadastro { get; set; }
         public DateTime? DataAtualizacao { get; set; }
     }
