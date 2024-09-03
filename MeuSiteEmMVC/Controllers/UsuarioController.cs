@@ -40,7 +40,7 @@ namespace MeuSiteEmMVC.Controllers
                 {
                     _usuarioRepository.Adicionar(usuario);
                     TempData["MensagemSucesso"] = "Usuario cadastrado com sucesso";
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index");   
                 }
                 return View(usuario);
             }

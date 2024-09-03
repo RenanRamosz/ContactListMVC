@@ -44,7 +44,6 @@ $('.btn-close').on("click", function(){
 // Script exibir/esconder senha do usuario
 const alternarSenha = document.querySelector('#togglePassword');
 const senha = document.querySelector('#inputPassword5');
-
 alternarSenha.addEventListener('click', function (e) {
     // Alterna o tipo do campo entre 'password' e 'text'
     const type = senha.getAttribute('type') === 'password' ? 'text' : 'password';
