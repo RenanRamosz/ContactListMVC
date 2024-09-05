@@ -11,6 +11,11 @@ namespace MeuSiteEmMVC.Repository
         {
             _bancoContext = bancoContext;
         }
+        public UsuarioModel? BuscarPorLogin(string login)
+        {
+            var loginEncontrado = _bancoContext.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
+            return loginEncontrado;
+        }
         public List<UsuarioModel> BuscarTodos()
         {
             return _bancoContext.Usuarios.ToList();

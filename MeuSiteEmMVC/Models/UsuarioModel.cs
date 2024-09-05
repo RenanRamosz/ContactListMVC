@@ -19,5 +19,9 @@ namespace MeuSiteEmMVC.Models
         public PerfilEnum? Perfil { get; set; }
         public DateTime DataCadastro { get; set; }
         public DateTime? DataAtualizacao { get; set; }
+        public bool ValidarSenha(string senha) 
+        {
+            return senha == Senha;
+        }
     }
 }
