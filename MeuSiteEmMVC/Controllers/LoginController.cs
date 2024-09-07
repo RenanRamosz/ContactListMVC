@@ -1,4 +1,5 @@
-﻿using MeuSiteEmMVC.Models;
+﻿using MeuSiteEmMVC.Helper;
+using MeuSiteEmMVC.Models;
 using MeuSiteEmMVC.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -8,13 +9,20 @@ namespace MeuSiteEmMVC.Controllers
     public class LoginController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepository;
+        private readonly ISessao _sessao;
 
-        public LoginController(IUsuarioRepository usuarioRepository) 
+        public LoginController(IUsuarioRepository usuarioRepository, ISessao sessao) 
         {
             _usuarioRepository = usuarioRepository;
+            _sessao = sessao;
         }
         public IActionResult Index()
         {
+           UsuarioModel? usuarioLogado = _sessao.BuscarSessaoUsuario();
+            if (usuarioLogado != null) 
+            {
+               return RedirectToAction("Index", "Home");
+            }
             return View();
         }
         [HttpPost]
@@ -31,6 +39,7 @@ namespace MeuSiteEmMVC.Controllers
                     {
                         if (usuario.ValidarSenha(loginModel.Senha))
                         {
+                            _sessao.CriarSessaoUsuario(usuario);
                             return RedirectToAction("Index", "Home");
                         }
                         TempData["MensagemErro"] = "Senha invalida. Por favor tente novamente.";
@@ -50,6 +59,11 @@ namespace MeuSiteEmMVC.Controllers
                 TempData["MensagemErro"] = $"Houve um erro ao fazer login. Informações adicionais: {message}";
                 return RedirectToAction("Index");
             }
+        }
+        public IActionResult Sair() 
+        {
+            _sessao.RemoverSessaoUsuario();
+            return RedirectToAction("Index");
         }
     }
 }
