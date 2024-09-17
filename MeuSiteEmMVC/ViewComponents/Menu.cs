@@ -11,7 +11,7 @@ namespace MeuSiteEmMVC.ViewComponents
             string? sessaoUsuario = HttpContext?.Session.GetString("SessaoUsuarioLogado");
             if (string.IsNullOrEmpty(sessaoUsuario)) 
             {
-                return Content("Usuario nao logado");
+                return null;
             }
 
             UsuarioModel? usuario = JsonSerializer.Deserialize<UsuarioModel>(sessaoUsuario);

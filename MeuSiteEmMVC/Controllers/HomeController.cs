@@ -1,14 +1,16 @@
+using MeuSiteEmMVC.Filters;
 using MeuSiteEmMVC.Models.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace MeuSiteEmMVC.Controllers
 {
+    [PaginaParaUsuarioLogado]
     public class HomeController : Controller
     {
         public IActionResult Index()
         {
-            
             return View();
         }
 

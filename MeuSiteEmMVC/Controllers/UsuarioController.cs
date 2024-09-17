@@ -1,9 +1,14 @@
-﻿using MeuSiteEmMVC.Models;
+﻿using MeuSiteEmMVC.Enums;
+using MeuSiteEmMVC.Filters;
+using MeuSiteEmMVC.Models;
 using MeuSiteEmMVC.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeuSiteEmMVC.Controllers
 {
+    [PaginaParaUsuarioLogado]
+    [PaginaSomenteAdmin]
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepository;

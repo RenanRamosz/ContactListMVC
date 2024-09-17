@@ -1,9 +1,12 @@
-﻿using MeuSiteEmMVC.Models;
+﻿using MeuSiteEmMVC.Filters;
+using MeuSiteEmMVC.Models;
 using MeuSiteEmMVC.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeuSiteEmMVC.Controllers
 {
+    [PaginaParaUsuarioLogado]
     public class ContatoController : Controller
     {
         private readonly IContatoRepository _contatoRepository;
