@@ -1,4 +1,5 @@
 ﻿using MeuSiteEmMVC.Filters;
+using MeuSiteEmMVC.Helper;
 using MeuSiteEmMVC.Models;
 using MeuSiteEmMVC.Repository;
 using Microsoft.AspNetCore.Authorization;
@@ -10,13 +11,20 @@ namespace MeuSiteEmMVC.Controllers
     public class ContatoController : Controller
     {
         private readonly IContatoRepository _contatoRepository;
-        public ContatoController(IContatoRepository contatoRepository) 
+        private readonly ISessao _sessao;
+        public ContatoController(IContatoRepository contatoRepository, ISessao sessao) 
         {
             _contatoRepository = contatoRepository;
+            _sessao = sessao;
         }
         public IActionResult Index()
         {
-            List<ContatoModel> listarContatos = _contatoRepository.BuscarTodos();
+            UsuarioModel? usuarioLogado = _sessao.BuscarSessaoUsuario();
+            if (usuarioLogado == null) 
+            {
+                throw new Exception();
+            }
+            List<ContatoModel> listarContatos = _contatoRepository.BuscarTodos(usuarioLogado.Id);
             return View(listarContatos);
         }
         public IActionResult Criar()
@@ -25,12 +33,12 @@ namespace MeuSiteEmMVC.Controllers
         }
         public IActionResult Editar(int id)
         {
-            ContatoModel contato = _contatoRepository.ListarPorId(id);
+            ContatoModel contato = _contatoRepository.BuscarPorId(id);
             return View(contato);
         }
         public IActionResult ApagarConfirmacao(int id)
         {
-            ContatoModel contato = _contatoRepository.ListarPorId(id);
+            ContatoModel contato = _contatoRepository.BuscarPorId(id);
             return View(contato);
         }
         [HttpPost]
@@ -40,6 +48,9 @@ namespace MeuSiteEmMVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    UsuarioModel? usuarioLogado = _sessao.BuscarSessaoUsuario();
+                    contato.UsuarioId = usuarioLogado?.Id;
+
                     _contatoRepository.Adicionar(contato);
                     TempData["MensagemSucesso"] = "Contato cadastrado com sucesso";
                     return RedirectToAction("Index");
@@ -59,6 +70,9 @@ namespace MeuSiteEmMVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    UsuarioModel? usuarioLogado = _sessao.BuscarSessaoUsuario();
+                    contato.UsuarioId = usuarioLogado?.Id;
+
                     contato = _contatoRepository.Atualizar(contato);
                     TempData["MensagemSucesso"] = "Contato alterado com sucesso!";
                     return RedirectToAction("Index");

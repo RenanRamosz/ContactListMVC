@@ -4,9 +4,9 @@ namespace MeuSiteEmMVC.Repository
 {
     public interface IContatoRepository
     {
-        List<ContatoModel> BuscarTodos();
+        List<ContatoModel> BuscarTodos(int UsuarioId);
         ContatoModel Adicionar(ContatoModel contato);
-        ContatoModel ListarPorId(int id);
+        ContatoModel BuscarPorId(int id);
         ContatoModel Atualizar(ContatoModel contato);
         bool Apagar(int id);
     }

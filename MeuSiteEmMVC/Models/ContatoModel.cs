@@ -13,5 +13,7 @@ namespace MeuSiteEmMVC.Models
         [Required(ErrorMessage = "Digite o telefone do contato")]
         [Phone(ErrorMessage = "O telefone informado não é válido!")]
         public string Telefone { get; set; } = string.Empty;
+        public int? UsuarioId { get; set; }
+        public UsuarioModel? Usuario { get; set; }
     }
 }

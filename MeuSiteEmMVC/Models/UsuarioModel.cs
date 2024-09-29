@@ -19,6 +19,7 @@ namespace MeuSiteEmMVC.Models
         public PerfilEnum? Perfil { get; set; }
         public DateTime DataCadastro { get; set; }
         public DateTime? DataAtualizacao { get; set; }
+        public virtual List<ContatoModel>? Contatos { get; set; }
         public bool ValidarSenha(string senha) 
         {
             return senha == Senha;

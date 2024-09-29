@@ -14,9 +14,9 @@ namespace MeuSiteEmMVC.Repository
             _bancoContext = bancoContext;
         }
 
-        public List<ContatoModel> BuscarTodos()
+        public List<ContatoModel> BuscarTodos(int UsuarioId)
         {
-            return _bancoContext.Contatos.ToList();
+            return _bancoContext.Contatos.Where(x => x.UsuarioId == UsuarioId).ToList();
         }
 
         public ContatoModel Adicionar(ContatoModel contato)
@@ -26,7 +26,7 @@ namespace MeuSiteEmMVC.Repository
 
             return contato;
         }
-        public ContatoModel ListarPorId(int id)
+        public ContatoModel BuscarPorId(int id)
         {
             var contato = _bancoContext.Contatos.FirstOrDefault(x => x.Id == id);
             if (contato == null)
@@ -38,7 +38,7 @@ namespace MeuSiteEmMVC.Repository
 
         public ContatoModel Atualizar(ContatoModel contato)
         {
-            ContatoModel contatoDb = ListarPorId(contato.Id);
+            ContatoModel contatoDb = BuscarPorId(contato.Id);
             if (contatoDb == null) throw new InvalidOperationException("Erro ao atualizar o contato");
 
             contatoDb.Nome = contato.Nome;
@@ -51,7 +51,7 @@ namespace MeuSiteEmMVC.Repository
         }
         public bool Apagar(int id)
         {
-            ContatoModel contatoDb = ListarPorId(id);
+            ContatoModel contatoDb = BuscarPorId(id);
             if (contatoDb == null) throw new SystemException("Erro ao deletar o contato");
 
             _bancoContext.Contatos.Remove(contatoDb);
