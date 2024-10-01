@@ -2,9 +2,44 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+//Script Modal
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.btn-total-contatos').forEach(function (button) {
+        button.addEventListener("click", function () {
+            var usuarioId = this.getAttribute('usuario-id');
+            $.ajax({
+                type: 'GET',
+                url: "/Usuario/ListarContatosPorUsuarioId/" + usuarioId,
+                success: function (result) {
+                    $("#listaContatosUsuario").html(result);
+                    CriarTabelas('#table-contatos-usuario');
+                    // Aqui está a correção para abrir o modal
+                    var modalContatoUsuario = new bootstrap.Modal(document.getElementById('modalContatosUsuario'));
+                    modalContatoUsuario.show(); // Mostra o modal
+                }
+            });
+        });
+    });
+})
+
+// Script exibir/esconder senha do usuario
+document.addEventListener('DOMContentLoaded', function () {
+    const alternarSenha = document.querySelector('#togglePassword');
+    const senha = document.querySelector('#inputPassword5');
+    alternarSenha.addEventListener("click", function () {
+        // Alterna o tipo do campo entre 'password' e 'text'
+        const type = senha.getAttribute('type') === 'password' ? 'text' : 'password';
+        senha.setAttribute('type', type);
+
+        // Alterna o texto do botão entre 'Mostrar' e 'Esconder'
+        this.textContent = type === 'password' ? 'Mostrar' : 'Esconder';
+    })
+})
 
 CriarTabelas('#table-contatos')
 CriarTabelas('#table-usuarios')
+
 function CriarTabelas(a) {
     return $(function () {
         $(a).DataTable({
@@ -40,16 +75,3 @@ function CriarTabelas(a) {
 $('.btn-close').on("click", function(){
     $('.alert').hide();
 });
-
-// Script exibir/esconder senha do usuario
-const alternarSenha = document.querySelector('#togglePassword');
-const senha = document.querySelector('#inputPassword5');
-alternarSenha.addEventListener('click', function (e) {
-    // Alterna o tipo do campo entre 'password' e 'text'
-    const type = senha.getAttribute('type') === 'password' ? 'text' : 'password';
-    senha.setAttribute('type', type);
-
-    // Alterna o texto do botão entre 'Mostrar' e 'Esconder'
-    this.textContent = type === 'password' ? 'Mostrar' : 'Esconder';
-});
-

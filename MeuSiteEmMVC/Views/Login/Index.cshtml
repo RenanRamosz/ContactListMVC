@@ -16,14 +16,14 @@
 <form asp-controller="Login" asp-action="Entrar" method="post">
     <div class="mb-2">
         <label for="login" class="form-label">Login</label>
-        <input asp-for="Login" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Digite o login">
+        <input asp-for="Login" type="text" autocomplete="username" class="form-control" aria-describedby="emailHelp" placeholder="Digite o login">
         @Html.ValidationMessageFor(x => x.Login)
     </div>
 
     <label for="inputPassword5" class="form-label">Senha</label>
     <div class="mb-2">
         <div class="input-group">
-            <input type="password" asp-for="Senha" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Digite a senha">
+            <input type="password" asp-for="Senha" autocomplete="current-password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Digite a senha">
             <button class="btn btn-outline-secondary shadow-none" type="button" id="togglePassword">
                 Mostrar
             </button>

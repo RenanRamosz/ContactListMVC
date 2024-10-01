@@ -16,6 +16,7 @@ namespace MeuSiteEmMVC.Repository
 
         public List<ContatoModel> BuscarTodos(int UsuarioId)
         {
+
             return _bancoContext.Contatos.Where(x => x.UsuarioId == UsuarioId).ToList();
         }
 

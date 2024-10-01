@@ -12,9 +12,11 @@ namespace MeuSiteEmMVC.Controllers
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepository;
-        public UsuarioController(IUsuarioRepository usuarioRepository)
+        private readonly IContatoRepository _contatoRepository;
+        public UsuarioController(IUsuarioRepository usuarioRepository, IContatoRepository contatoRepository)
         {
             _usuarioRepository = usuarioRepository;
+            _contatoRepository = contatoRepository;
         }
         public IActionResult Index()
         {
@@ -34,6 +36,12 @@ namespace MeuSiteEmMVC.Controllers
         {
             UsuarioModel usuario = _usuarioRepository.BuscarPorId(id);
             return View(usuario);
+        }
+
+        public IActionResult ListarContatosPorUsuarioId(int id) 
+        {
+            List<ContatoModel> contatos = _contatoRepository.BuscarTodos(id);
+            return PartialView("_ContatosUsuarios", contatos);
         }
 
         [HttpPost]
