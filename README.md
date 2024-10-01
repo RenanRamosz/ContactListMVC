@@ -18,4 +18,7 @@ Com este projeto, adquiri experiência na criação de um sistema CRUD integrado
 
 **ORM:** Entity Framework Core
 
+## Demonstração
+
+https://github.com/user-attachments/assets/e04c846c-dc0b-401c-a23d-fbc0b55f628b
 
