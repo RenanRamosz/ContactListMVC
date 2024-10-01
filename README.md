@@ -1,14 +1,21 @@
-
 # Lista de contatos
 
-Este projeto é uma aplicação Server-Side Rendering (SSR) que implementa um sistema CRUD para gerenciar uma lista de contatos. Ele permite criar, visualizar, editar e excluir contatos, com todas as informações sendo armazenadas de forma persistente em um banco de dados. A aplicação também oferece autenticação, permitindo login como administrador ou como usuário padrão. O administrador tem permissões especiais, como visualizar os contatos de todos os usuários cadastrados e cadastrar novos usuários.
+Este projeto é uma aplicação CRUD para gerenciar uma lista de contatos. Ele permite criar, visualizar, editar e excluir contatos, com todas as informações sendo armazenadas de forma persistente em um banco de dados. A aplicação também oferece autenticação, permitindo login como administrador ou como usuário padrão. O administrador tem permissões especiais, como visualizar os contatos de todos os usuários cadastrados e cadastrar novos usuários.
+
 ## Aprendizados
 
+Com este projeto, adquiri experiência na criação de um sistema CRUD integrado a um banco de dados utilizando o Entity Framework. Também aprendi a utilizar Git para versionamento e envio dos meus projetos ao GitHub. Além disso, aprofundei meus conhecimentos no padrão MVC e na implementação de Injeção de Dependência (DI) com o framework ASP.NET Core MVC, o que melhorou a estrutura e manutenibilidade do código.
 
-Com esse projeto, aprendi a fazer um CRUD conectado a um banco de dados ORM, a usar o Git para salvar e enviar meus projetos para o GitHub, além de aprofundar meus conhecimentos em MVC e DI (Injeção de Dependência) utilizando o framework .NET Core MVC.
 ## Stack utilizada
 
-**Front-end:** C#, HTML5, CSS, Javascript e Bootstrap.
+**Frontend:** HTML5, CSS3, JavaScript, Bootstrap
 
-**Back-end:** C#, .Net Core MVC, Entity framework, Microsoft SQL Server.
+**Back-end:** C#, ASP Net Core MVC, Entity framework, Microsoft SQL Server
+
+**Bibliotecas JavaScript:** jQuery, DataTables
+
+**Banco de Dados:** SQL Server
+
+**ORM:** Entity Framework Core
+
 
