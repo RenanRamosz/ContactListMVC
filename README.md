@@ -1,6 +1,6 @@
 # Lista de contatos
 
-Este projeto é uma aplicação CRUD para gerenciar uma lista de contatos. Ele permite criar, visualizar, editar e excluir contatos, com todas as informações sendo armazenadas de forma persistente em um banco de dados. A aplicação também oferece autenticação, permitindo login como administrador ou como usuário padrão. O administrador tem permissões especiais, como visualizar os contatos de todos os usuários cadastrados e cadastrar novos usuários.
+Este projeto, desenvolvido como parte de um curso, é uma aplicação CRUD para gerenciar uma lista de contatos. Ele permite criar, visualizar, editar e excluir contatos, com todas as informações sendo armazenadas de forma persistente em um banco de dados. A aplicação também oferece autenticação, permitindo login como administrador ou como usuário padrão. O administrador tem permissões especiais, como visualizar os contatos de todos os usuários cadastrados e cadastrar novos usuários.
 
 ## Aprendizados
 
